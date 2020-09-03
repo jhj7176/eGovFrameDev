@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta charset="utf-8">
@@ -42,7 +42,9 @@
 .container {
 	text-align: center;
 }
-
+td>a{
+	display: block;
+}
 #footer {
 	position: relative;
 	bottom: 0px;
@@ -75,40 +77,50 @@
 		</div>
 		<div class="row" id="content">
 			<div class="col-md-12">
-
-				<h1>DEPT page</h1>
-				<table class="table table-hover table-striped">
-					<tr>
-						<th>deptno</th>
-						<th>dname</th>
-						<th>loc</th>
-					</tr>
-					
-					<c:forEach items="${list }" var = "bean"> 
-						<tr>
-						<td><a href="#">${bean.deptno }</a></td>
-						<td><a href="#">${bean.dname }</a></td>
-						<td><a href="#">${bean.loc }</a></td>
-						</tr>
-					</c:forEach>					
-
-				</table>
-
-			</div>
-
-			<div class="row" id="footer">
 				<div class="col-md-12">
-					<p>
-						비트캠프 서울시 서초구 강남대로 459 (서초동, 백암빌딩)｜ 사업자등록번호 : 214-85-24928 (주)비트컴퓨터
-						서초본원 대표이사 : 조현정 / 문의 : 02-3486-9600 / 팩스 : 02-6007-1245<br>
-						통신판매업 신고번호 : 제 서초-00098호 / 개인정보보호관리책임자 : 최종진<br> Copyright
-						&copy; 비트캠프 All rights reserved.
-					</p>
+
+					<div class="jumbotron">
+						<h1>DEPT page</h1>
+						<p>...</p>
+						<p>
+							<a class="btn btn-primary btn-lg" href="dadd.action"
+								role="button">Add more</a>
+						</p>
+					</div>
 				</div>
 			</div>
+			<table class="table table-hover table-striped">
+				<tr>
+					<th>deptno</th>
+					<th>dname</th>
+					<th>loc</th>
+				</tr>
 
+				<c:forEach items="${list }" var="bean">
+					<tr>
+						<td><a href="ddetail.action?deptno=${bean.deptno }">${bean.deptno }</a></td>
+						<td><a href="ddetail.action?deptno=${bean.deptno }">${bean.dname }</a></td>
+						<td><a href="ddetail.action?deptno=${bean.deptno }">${bean.loc }</a></td>
+					</tr>
+				</c:forEach>
+
+			</table>
 
 		</div>
-		<!-- /.container -->
+
+		<div class="row" id="footer">
+			<div class="col-md-12">
+				<p>
+					비트캠프 서울시 서초구 강남대로 459 (서초동, 백암빌딩)｜ 사업자등록번호 : 214-85-24928 (주)비트컴퓨터
+					서초본원 대표이사 : 조현정 / 문의 : 02-3486-9600 / 팩스 : 02-6007-1245<br>
+					통신판매업 신고번호 : 제 서초-00098호 / 개인정보보호관리책임자 : 최종진<br> Copyright
+					&copy; 비트캠프 All rights reserved.
+				</p>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /.container -->
 </body>
 </html>

@@ -10,18 +10,82 @@
 			<result>/index.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="emp" extends="default">
-		<action name="emp">
+		<action name="emp" class="com.bit.emp.action.ListAction">
+			<interceptor-ref name="params"></interceptor-ref>
 			<result>/emp/list.jsp</result>
 		</action>
 
+		<action name="edetail" class="com.bit.emp.action.OneAction">
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/emp/detail.jsp</result>
+		</action>
+		
+		<action name="eadd"></action>
+		<action name="einsert"></action>
+		
+		<action name="eedit" class="com.bit.emp.action.OneAction">
+			<interceptor-ref name="modelDriven"/>
+			<interceptor-ref name="params"/>
+			<result>/emp/edit.jsp</result>
+		</action>
+		
+		<action name="eupdate"></action>
+		
+		<action name="edelete"></action>
+
 	</package>
+
+
 	<package name="dept" extends="default">
 		<action name="dept" class="com.bit.dept.action.ListAction">
 			<interceptor-ref name="params"></interceptor-ref>
 			<result>/dept/list.jsp</result>
 		</action>
+
+		<action name="dadd">
+			<result>/dept/add.jsp</result>
+		</action>
+
+		<action name="dinsert" class="com.bit.dept.action.AddAction">
+			<interceptor-ref name="prepare"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success" type="redirectAction">dept</result>
+		</action>
+
+		<action name="ddetail" class="com.bit.dept.action.OneAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/dept/detail.jsp</result>
+		</action>
+
+		<action name="dedit" class="com.bit.dept.action.OneAction">
+			<interceptor-ref name="params"></interceptor-ref>
+			<result name="success">/dept/edit.jsp</result>
+		</action>
+
+
+		<action name="dupdate" class="com.bit.dept.action.EditAction">
+			<interceptor-ref name="prepare"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="validation"></interceptor-ref>
+			<interceptor-ref name="workflow"></interceptor-ref>
+
+			<result name="input" type="redirectAction">
+				<param name="deptno">${bean.deptno}</param>
+				<param name="actionName">dedit</param>
+			</result>
+			<result name="success" type="redirectAction">
+
+				<param name="deptno">${bean.deptno}</param>
+				<param name="actionName">ddetail</param>
+			</result>
+		</action>
+
+
 	</package>
 
 </struts>
