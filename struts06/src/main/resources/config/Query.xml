@@ -9,5 +9,21 @@
 		resultClass="com.bit.emp.model.entity.EmpVo">
 		select * from emp
 	</select>
+	
+	<insert id="insertOne" parameterClass="com.bit.emp.model.entity.EmpVo">
+		insert into emp (name, sub, nalja, pay) values (#name#,#sub#,now(),#pay#)
+	</insert>
+	
+	<select id="selectOne" parameterClass="int" resultClass="com.bit.emp.model.entity.EmpVo">
+		select * from emp where sabun = #value#
+	</select>
+	
+	<update id="updateOne" parameterClass="com.bit.emp.model.entity.EmpVo">
+		update emp set name=#name#, sub=#sub#, pay=#pay# where sabun = #sabun#
+	</update>
+	
+	<delete id="deleteOne" parameterClass="int">
+		delete from emp where sabun = #value#
+	</delete>
 
 </sqlMap>

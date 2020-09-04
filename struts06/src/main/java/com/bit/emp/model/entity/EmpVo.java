@@ -54,9 +54,8 @@ public class EmpVo {
 		return "EmpVo [sabun=" + sabun + ", pay=" + pay + ", name=" + name + ", sub=" + sub + ", nalja=" + nalja + "]";
 	}
 
-	public EmpVo(int sabun, int pay, String name, String sub, Date nalja) {
+	public EmpVo(int pay, String name, String sub, Date nalja) {
 		super();
-		this.sabun = sabun;
 		this.pay = pay;
 		this.name = name;
 		this.sub = sub;
