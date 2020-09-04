@@ -73,7 +73,7 @@ form{
 					EMP <small>Edit page</small>
 				</h1>
 			</div>
-			<form action="dupdate.action" method="post" class="form-horizontal">
+			<form action="eupdate.action" method="post" class="form-horizontal">
 							
 				  <div class="form-group">
 				    <label for="sabun" class="col-sm-2 control-label">sabun</label>

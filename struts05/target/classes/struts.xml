@@ -18,22 +18,38 @@
 		</action>
 
 		<action name="edetail" class="com.bit.emp.action.OneAction">
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
 			<result>/emp/detail.jsp</result>
 		</action>
-		
+
 		<action name="eadd"></action>
 		<action name="einsert"></action>
-		
+
 		<action name="eedit" class="com.bit.emp.action.OneAction">
-			<interceptor-ref name="modelDriven"/>
-			<interceptor-ref name="params"/>
+			<interceptor-ref name="modelDriven" />
+			<interceptor-ref name="params" />
 			<result>/emp/edit.jsp</result>
 		</action>
-		
-		<action name="eupdate"></action>
-		
+
+		<action name="eupdate" class="com.bit.emp.action.EditAction">
+			<interceptor-ref name="prepare"></interceptor-ref>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="params"></interceptor-ref>
+			<interceptor-ref name="validation"></interceptor-ref>
+			<interceptor-ref name="workflow"></interceptor-ref>
+
+			<result name="input" type="redirectAction">
+				<param name="sabun">${bean.sabun}</param>
+				<param name="actionName">eedit</param>
+			</result>
+			<result name="success" type="redirectAction">
+				<param name="sabun">${bean.sabun}</param>
+				<param name="actionName">edetail</param>
+			</result>
+		</action>
+
+
 		<action name="edelete"></action>
 
 	</package>
@@ -65,6 +81,7 @@
 			<interceptor-ref name="params"></interceptor-ref>
 			<result name="success">/dept/edit.jsp</result>
 		</action>
+
 
 
 		<action name="dupdate" class="com.bit.dept.action.EditAction">

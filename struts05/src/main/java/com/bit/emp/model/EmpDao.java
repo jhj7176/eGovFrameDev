@@ -87,8 +87,29 @@ public class EmpDao {
 	public void insertOne() {
 	}
 
-	public void updateOne() {
-	}
+	public void updateOne(EmpVo bean) throws SQLException {
+		final String sql="update emp set name=?, sub=?,pay=? where sabun=?";
+		System.out.println(bean.getName());
+
+		try {
+			conn = this.getConnection();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, bean.getName());
+		pstmt.setString(2, bean.getSub());
+		pstmt.setInt(3, bean.getPay());
+		pstmt.setInt(4, bean.getSabun());
+		pstmt.executeUpdate();
+		
+		if (pstmt != null)
+			pstmt.close();
+		if (conn != null)
+			conn.close();
+	}//updaetone
 
 	public void deleteOne() {
 	}
