@@ -3,6 +3,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<!--************************* 의존 주입 DI패턴 결합도↓ 재사용성&유지보수↑ **************************** -->
+
+	<bean id="emp" class="com.bit.framework.emp.model.EmpDao"
+		scope="singleton">
+		<!-- *************** 생성자에 파라미터 주입 ************** -->
+		<constructor-arg value="org.mariadb.jdbc.Driver" />
+		<constructor-arg
+			value="jdbc:mysql://localhost:3306/xe" />
+		<constructor-arg value="scott" />
+		<constructor-arg value="tiger" />
+
+	</bean><!-- dao객체를 listController에 주입 -->
+	<!-- private String driver = "org.mariadb.jdbc.Driver"; private String url 
+		= "jdbc:mysql://localhost:3306/xe"; private String user = "scott"; private 
+		String password = "tiger"; -->
+
 	<!--handlerMapping -->
 	<bean id="handlerMapping"
 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
@@ -19,7 +35,36 @@
 		<property name="viewName" value="index"></property>
 	</bean>
 
-	<bean name="/emp/list.bit" class="com.bit.framework.emp.controller.ListController"></bean>
-	<bean name="/emp/add.bit" class="com.bit.framework.emp.controller.AddController"></bean>
+	<bean name="/emp/list.bit"
+		class="com.bit.framework.emp.controller.ListController">
+		<property name="dao"><!-- *********** setter를 이용한 파라미터 주입 *********** -->
+			<ref bean="emp" />
+		</property>
+	</bean>
+	<bean name="/emp/add.bit"
+		class="com.bit.framework.emp.controller.AddController">
+		<property name="dao">
+			<ref bean="emp" />
+		</property>
+	</bean>
+
+	<bean name="/emp/detail.bit"
+		class="com.bit.framework.emp.controller.DetailController">
+		<property name="dao">
+			<ref bean="emp" />
+		</property>
+	</bean>
+	<bean name="/emp/update.bit"
+		class="com.bit.framework.emp.controller.UpdateController">
+		<property name="dao">
+			<ref bean="emp" />
+		</property>
+	</bean>
+	<bean name="/emp/delete.bit"
+		class="com.bit.framework.emp.controller.DeleteController">
+		<property name="dao">
+			<ref bean="emp" />
+		</property>
+	</bean>
 
 </beans>

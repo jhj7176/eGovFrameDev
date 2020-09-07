@@ -9,9 +9,24 @@
 	href="../bootstrap-3.4.1-dist/css/bootstrap.min.css" />
 
 <style type="text/css">
+
+
 </style>
 <script type="text/javascript" src="../jquery/jquery-1.12.4.js"></script>
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+	$(function(){
+		
+		$('#content form').one('submit',function(){
+			$('input[type="text"]').each(function(idx,ele){
+				if(idx!=0 && idx!=2)
+				$(this).prop('readonly',false);
+			});
+			return false;
+		});//submit
+		
+	});//ready
+</script>
 </head>
 
 <body>
@@ -36,26 +51,37 @@
 		<div class="row" id="content">
 			<div class="col-md-12">
 
-				<form action="add.bit" method="post">
+				<form action="update.bit" method="post">
+					<div class="form-group">
+						<label for="sabun">sabun</label> <input
+							name="sabun" type="text" class="form-control" id="sabun"
+							value="${bean.sabun }" readonly="readonly"/>
+					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">name</label> <input
 							name="name" type="text" class="form-control" id="exampleInputEmail1"
-							placeholder="name">
+							value="${bean.name }" readonly="readonly"/>
+					</div>
+					<div class="form-group">
+						<label for="nalja">hireDate</label> <input
+							name="nalja" type="text" class="form-control" id="nalja"
+							value="${bean.nalja }" readonly="readonly"/>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">sub</label> <input
 							name="sub" type="text" class="form-control" id="exampleInputPassword1"
-							placeholder="sub">
+							value="${bean.sub }" readonly="readonly"/>
 					</div>
 					
 					<div class="form-group">
 						<label for="exampleInputPassword1">pay</label> <input
 							name="pay" type="text" class="form-control" id="exampleInputPassword1"
-							placeholder="pay">
+							value="${bean.pay }" readonly="readonly"/>
 					</div>
 					
 
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">edit</button>
+				<a href="delete.bit?idx=${bean.sabun }" class="btn btn-primary text-center">delete</a>
 				</form>
 
 
@@ -73,11 +99,6 @@
 				</div>
 
 			</div>
-
-
-
-
-
 
 		</div>
 </body>

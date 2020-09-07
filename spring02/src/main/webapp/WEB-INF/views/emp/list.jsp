@@ -28,7 +28,7 @@
 		<div class="row" id="menu">
 			<div class="col-md-12 text-center">
 				<a href="index.bit">HOME</a>
-				<a href="emp/list.bit">EMP</a> 
+				<a href="list.bit">EMP</a> 
 				<a href="dept/list.bit">DEPT</a>
 				<a href="login/form.bit">LOGIN</a>
 			</div>
@@ -51,11 +51,11 @@
 					<tbody>
 						<c:forEach items="${alist }" var="bean">
 							<tr>
-								<td><a href="?sabun=${bean.sabun }">${bean.sabun }</a></td>
-								<td><a href="?sabun=${bean.sabun }">${bean.name }</a></td>
-								<td><a href="?sabun=${bean.sabun }">${bean.sub }</a></td>
-								<td><a href="?sabun=${bean.sabun }">${bean.nalja }</a></td>
-								<td><a href="?sabun=${bean.sabun }">${bean.pay }</a></td>
+								<td><a href="detail.bit?idx=${bean.sabun }">${bean.sabun }</a></td>
+								<td><a href="detail.bit?idx=${bean.sabun }">${bean.name }</a></td>
+								<td><a href="detail.bit?idx=${bean.sabun }">${bean.sub }</a></td>
+								<td><a href="detail.bit?idx=${bean.sabun }">${bean.nalja }</a></td>
+								<td><a href="detail.bit?idx=${bean.sabun }">${bean.pay }</a></td>
 							</tr>
 						</c:forEach>
 
