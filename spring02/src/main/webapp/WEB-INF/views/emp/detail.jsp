@@ -42,7 +42,7 @@
 
 		<div class="row" id="menu">
 			<div class="col-md-12 text-center">
-				<a href="index.bit">HOME</a> <a href="list.bit">EMP</a> <a
+				<a href="../index.bit">HOME</a> <a href="list.bit">EMP</a> <a
 					href="dept/list.bit">DEPT</a> <a href="login/form.bit">LOGIN</a>
 			</div>
 
