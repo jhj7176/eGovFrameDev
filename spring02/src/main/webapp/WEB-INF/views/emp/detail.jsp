@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fm" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
-
+	
 <head>
 <link rel="stylesheet" type="text/css"
 	href="../bootstrap-3.4.1-dist/css/bootstrap.min.css" />
@@ -22,6 +22,7 @@
 				if(idx!=0 && idx!=2)
 				$(this).prop('readonly',false);
 			});
+			$('.btn-danger').hide();
 			return false;
 		});//submit
 		
@@ -81,7 +82,7 @@
 					
 
 					<button type="submit" class="btn btn-default">edit</button>
-				<a href="delete.bit?idx=${bean.sabun }" class="btn btn-primary text-center">delete</a>
+				<a href="delete.bit?idx=${bean.sabun }" class="btn btn-danger text-center" role="btn">delete</a>
 				</form>
 
 
